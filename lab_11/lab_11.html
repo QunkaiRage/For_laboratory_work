@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная №11</title>
+</head>
+
+<body>
+    <div>
+        <p>Введите телефон</p>
+    </div>
+
+    <input type="text" rel="phone">
+    <script>
+        let input = document.querySelector("input[rel=phone]");
+
+        input.oninput = function() {
+            let num = this.value.replace(/[\D]/g, "");
+            this.value = "+";
+
+            if(num.substr(0,1) != 7){
+                this.value += "7";
+            }
+            else this.value += num.substr(0,1);
+            
+            if(num.length > 1){
+            this.value += " (" + num.substr(1,3);
+            }
+            if(num.length > 4){
+            this.value += ") " + num.substr(4,3);
+            }
+            if(num.length > 7){
+            this.value += "-" + num.substr(7,2);
+            }
+            if(num.length > 9){
+            this.value += "-" + num.substr(9,2);
+            }
+        }
+    </script>
+</body>
+</html>
